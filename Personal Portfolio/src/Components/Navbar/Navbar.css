@@ -1,0 +1,118 @@
+General Navbar
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #292828;
+  font-size: 16px; /* Increased for readability */
+  position: relative;
+}
+
+/* Logo */
+.logo {
+  height: 50px;
+}
+
+/* Menu Button (Hidden by Default) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 3;
+}
+
+/* Navbar Menu */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav-menu li {
+  cursor: pointer;
+  background: linear-gradient(170deg, #DF8908 0.36%, #B415FF 106%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Connect Button */
+.nav-connect {
+  background: linear-gradient(170deg, #DF8908 0.36%, #B415FF 106%);
+  padding: 8px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.4s;
+  border: 2px solid transparent;
+}
+
+.nav-connect:hover {
+  transform: scale(1.1);
+  border-color: rgb(247, 233, 233);
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 8px;
+    right: -100%;
+    width: 40%;
+    height: 100vh;
+    background-color: #333;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: right 0.5s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .nav-menu.open {
+    right: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .nav-menu li {
+
+    font-size: 20px;
+    margin: 14px 0;
+  }
+
+  /* Move Connect Button Inside Navbar */
+  .nav-connect{
+    border-radius: 50px;
+    padding:0.8rem;
+    width:40%;
+    text-align: centre;
+  }
+  .anchor-link{
+    text-decoration: none;
+    color: aliceblue;
+  }
+  /* Close Button */
+  .close-menu {
+    position: absolute;
+    top: 1px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+  }
+}

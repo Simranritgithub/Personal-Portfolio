@@ -1,0 +1,229 @@
+/* Base Styles */
+.hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  padding: 5vh 2vw;
+}
+
+/* .hero img {
+  margin-top: 1vh;
+  height: 140px;
+  width: 100px;
+  border-radius: 20px;
+} */
+
+/* Responsive Typography */
+.hero h1 {
+  max-width: 70%;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.hero h1 span {
+  background: linear-gradient(270deg, #DF8908 10%, #B415FF 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #B415FF; /* Fallback */
+}
+
+.hero p {
+  max-width: 60%;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+}
+
+/* Action Button Styles */
+.hero-action {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.hero-action button {
+  padding: 1.5rem 2.5rem;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero-action button:hover, .hero-action button:focus {
+  border: 2px solid white;
+    
+    }
+  
+  
+    .hero-action button {
+      padding: 0.8rem 1.8rem;
+      font-size: 0.85rem;
+     
+    }
+    .hero-connect{
+      border-radius: 40px;
+      padding: 0.4rem;
+      width:90%;
+      background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease-in-out;
+        text-decoration: none;
+        color: aliceblue;
+        
+    }
+    .anchor-link{
+      text-decoration: none;
+      color: aliceblue;
+    }
+    /* .hero-resume{
+      border-radius: 40px;
+      padding:0.4rem;
+      width:90%;
+      text-align: centre;
+  
+      background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+      text-decoration: none;
+      color: aliceblue;
+      
+    } */
+    .simran{
+      text-decoration: none;
+      color: aliceblue;
+      
+    }
+  
+    
+  
+  
+
+
+/* --- Responsive Adjustments --- */
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero img {
+    margin-top: 5vh;
+    height: 180px;
+    width: 120px;
+  }
+
+  .hero h1 {
+    width: 90%;
+    font-size: 2rem;
+  }
+
+  .hero p {
+    width: 80%;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    margin: 10px 0;
+  }
+
+  .hero-action {
+    gap: 1rem;
+    font-size: 1rem;
+    flex-direction: column; /* Stacks buttons on smaller screens */
+  }
+  .hero-connect{
+    background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+      text-decoration: none;
+      color: aliceblue;
+    }
+
+  
+  .hero-resume{
+    border-radius: 40px;
+    padding:0.8rem;
+    width:80%;
+    text-align: centre;
+
+    background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    color: aliceblue;
+    
+  }
+
+  .hero-action button {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    border-radius: 40px;
+  }
+}
+
+/* Very Small Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero img {
+    height: 160px;
+    width: 100px;
+    
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    width: 95%;
+  }
+
+  .hero p {
+    width: 90%;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  }
+  .hero-connect{
+    border-radius: 40px;
+    padding:0.8rem;
+    width:80%;
+    text-align: centre;
+
+  }
+.hero-connect{
+  background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    color: aliceblue;
+  }
+
+
+  .hero-action button {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.85rem;
+   
+  }
+  .hero-resume{
+    border-radius: 40px;
+    padding:0.8rem;
+    width:80%;
+    text-align: centre;
+
+    background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    color: aliceblue;
+    
+  }
+
+  
+}

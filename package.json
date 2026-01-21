@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "multer-storage-cloudinary": "^4.0.0"
+  }
+}
