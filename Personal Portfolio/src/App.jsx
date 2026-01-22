@@ -7,6 +7,7 @@ import Register from "./Components/Auth/Register";
 import Admin from "./Admin/Pages/Admin";
 import Addproject from "./Admin/Pages/Addproject";
 import Projects from "./Admin/Pages/Project";
+import EditProject from "./Admin/Pages/EditProject";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/add-project" element={<Addproject />}/>
         <Route path="/projects" element={<Projects/>}/>
+        <Route path="/admin/edit-project/:id" element={<EditProject />} />
+
       </Routes>
     </Router>
   );
