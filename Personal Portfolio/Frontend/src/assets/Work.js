@@ -1,9 +1,9 @@
-import Food from '../assets/Food.png';
-import AdhikarAI from '../assets/AdhikarAI.png';
-import Weatherapp from'../assets/Weatherapp.png';
-import Homereact from'../assets/Homereact.png';
-import Stopwatch from '../assets/Stopwatch.png';
-import Reactpost from '../assets/Reactpost.png';
+import Food from './Food.png';
+import AdhikarAI from './AdhikarAI.png';
+import Weatherapp from'./Weatherapp.png';
+import Homereact from'./Homereact.png';
+import Stopwatch from './Stopwatch.png';
+import Reactpost from './Reactpost.png';
  const workData =
 
 [

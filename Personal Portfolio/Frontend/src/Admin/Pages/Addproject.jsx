@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar";
-import API from "@/API/axios.js";
+import API from "../../API/axios.js";
 
 const GlassCard = ({ children, className = "" }) => {
   return (
@@ -60,7 +60,6 @@ const InputField = ({
 const Addproject = () => {
   const [file, setFile] = useState(null);
 
-  
   const [form, setform] = useState({
     title: "",
     description: "",
@@ -68,44 +67,44 @@ const Addproject = () => {
     github: "",
     tech: "",
   });
-  
+
   const handleonChange = (e) => {
     setform({ ...form, [e.target.name]: e.target.value });
   };
   const HandleonAdd = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const formData = new FormData();
+    try {
+      const formData = new FormData();
 
-    formData.append("title", form.title);
-    formData.append("description", form.description);
-    formData.append("tech", form.tech);
-    formData.append("github", form.github);
-    formData.append("imagetype", form.imagetype);
-    formData.append("file", file); // 🔥 MOST IMPORTANT
+      formData.append("title", form.title);
+      formData.append("description", form.description);
+      formData.append("tech", form.tech);
+      formData.append("github", form.github);
+      formData.append("imagetype", form.imagetype);
+      formData.append("file", file); // 🔥 MOST IMPORTANT
 
-    const res = await API.post("/add/project", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-
-    if (res.data.success) {
-      alert("Project added successfully");
-      setform({
-        title: "",
-        description: "",
-        imagetype: "",
-        github: "",
-        tech: "",
+      const res = await API.post("/add/project", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
-      setFile(null);
+
+      if (res.data.success) {
+        alert("Project added successfully");
+        setform({
+          title: "",
+          description: "",
+          imagetype: "",
+          github: "",
+          tech: "",
+        });
+        setFile(null);
+      }
+    } catch (error) {
+      console.error("Error while adding project:", error);
     }
-  } catch (error) {
-    console.error("Error while adding project:", error);
-  }
-};
+  };
 
   return (
     <div className="min-h-screen w-full  bg-gradient-to-br from-[#DF8908] to-[#B415FF]">
@@ -152,7 +151,7 @@ const Addproject = () => {
                 placeholder="Provide Github link"
                 onChange={handleonChange}
               />
-              <input type="file" onChange={(e)=>setFile(e.target.files[0])}/>
+              <input type="file" onChange={(e) => setFile(e.target.files[0])} />
               <select
                 name="imagetype"
                 value={form.imagetype}

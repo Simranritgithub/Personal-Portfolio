@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import GlassCard from "../Components/GlassCard";
 import Navbar from "../Components/Navbar";
-import API from "@/API/axios";
+import API from "../../API/axios";
 import Inputfield from "../Components/Inputfield";
 
 const EditProject = () => {
@@ -15,11 +15,11 @@ const EditProject = () => {
     tech: "",
     github: "",
     imageUrl: "",
-    type: ""
+    type: "",
   });
 
   const [loading, setLoading] = useState(true);
-  const [file,setFile]=useState(null);
+  const [file, setFile] = useState(null);
 
   // 🔹 Fetch single project
   useEffect(() => {
@@ -31,19 +31,19 @@ const EditProject = () => {
           setForm({
             title: p.title,
             description: p.description,
-            tech:p.tech,
+            tech: p.tech,
             github: p.github,
             imageUrl: p.imageUrl,
-            type: p.type
+            type: p.type,
           });
-          console.log("project",{
+          console.log("project", {
             title: p.title,
             description: p.description,
             tech: Array.isArray(p.tech) ? p.tech.join(", ") : p.tech,
             github: p.github,
             imageUrl: p.imageUrl,
-            type: p.type
-          })
+            type: p.type,
+          });
           setLoading(false);
         }
       } catch (error) {
@@ -64,18 +64,18 @@ const EditProject = () => {
     try {
       const formData = new FormData();
       formData.append("title", form.title);
-    formData.append("description", form.description);
-    
-    formData.append("github", form.github);
-    formData.append("imagetype", form.imagetype);
-    formData.append("file", file);
-      formData.append("tech",form.tech);
+      formData.append("description", form.description);
+
+      formData.append("github", form.github);
+      formData.append("imagetype", form.imagetype);
+      formData.append("file", file);
+      formData.append("tech", form.tech);
 
       const res = await API.patch(`/edit/project/${id}`, formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (res.data.success) {
         navigate("/projects");
       }
@@ -90,7 +90,6 @@ const EditProject = () => {
 
       <div className="flex justify-center px-4 pt-28">
         <main className="w-full md:max-w-5xl">
-          
           {/* Header */}
           <div className="flex flex-col mt-8 px-6">
             <h1 className="text-4xl font-bold text-white tracking-tighter">
@@ -108,33 +107,36 @@ const EditProject = () => {
             </GlassCard>
           ) : (
             <GlassCard>
-              <form onSubmit={handleUpdate} className="flex flex-col space-y-6 p-4">
-
+              <form
+                onSubmit={handleUpdate}
+                className="flex flex-col space-y-6 p-4"
+              >
                 <Inputfield
                   name="title"
                   value={form.title}
                   onChange={handleChange}
                   placeholder="Project Title"
-                  
                 />
-                <div className="flex flex-col"><label className="bg-clip-text text-transparent bg-gradient-to-tr from-[#DF8908] to-[#B415FF] uppercase font-mono font-semibold">Description</label> <textarea
-                  name="description"
-                  value={form.description}
-                  onChange={handleChange}
-                  placeholder="Project Description"
-                  rows={4}
-                  className="rounded-xl shadow-2xl
+                <div className="flex flex-col">
+                  <label className="bg-clip-text text-transparent bg-gradient-to-tr from-[#DF8908] to-[#B415FF] uppercase font-mono font-semibold">
+                    Description
+                  </label>{" "}
+                  <textarea
+                    name="description"
+                    value={form.description}
+                    onChange={handleChange}
+                    placeholder="Project Description"
+                    rows={4}
+                    className="rounded-xl shadow-2xl
    border-b border-white/40 px-4 py-2"
-                 
-                /></div>
-               
+                  />
+                </div>
 
                 <Inputfield
                   name="tech"
                   value={form.tech}
                   onChange={handleChange}
                   placeholder="Tech stack (comma separated)"
-                  
                 />
 
                 <Inputfield
@@ -142,7 +144,6 @@ const EditProject = () => {
                   value={form.github}
                   onChange={handleChange}
                   placeholder="GitHub URL"
-                  
                 />
 
                 {/* <Inputfield
@@ -153,19 +154,22 @@ const EditProject = () => {
                   
                 /> */}
 
-<input type="file" onChange={(e)=>setFile(e.target.files[0])}/>
-              <select
-                name="imagetype"
-                value={form.imagetype}
-                onChange={handleChange}
-                className="bg-gradient-to-br from-[#ff9e0c] to-[#b737f3] text-slate-800 rounded-xl px-4 py-2"
-              >
-                <option value="">Select image type</option>
-                <option value="Png">Png</option>
-                <option value="Jpg">Jpg</option>
-                <option value="Jpeg">Jpeg</option>
-                <option value="Svg">Svg</option>
-              </select>
+                <input
+                  type="file"
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+                <select
+                  name="imagetype"
+                  value={form.imagetype}
+                  onChange={handleChange}
+                  className="bg-gradient-to-br from-[#ff9e0c] to-[#b737f3] text-slate-800 rounded-xl px-4 py-2"
+                >
+                  <option value="">Select image type</option>
+                  <option value="Png">Png</option>
+                  <option value="Jpg">Jpg</option>
+                  <option value="Jpeg">Jpeg</option>
+                  <option value="Svg">Svg</option>
+                </select>
 
                 <div className="flex gap-4 pt-4">
                   <button
@@ -183,7 +187,6 @@ const EditProject = () => {
                     Cancel
                   </button>
                 </div>
-
               </form>
             </GlassCard>
           )}

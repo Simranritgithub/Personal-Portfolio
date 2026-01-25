@@ -1,43 +1,40 @@
 import React, { useState } from "react";
 import workData from "../../assets/Work.js";
 import { useEffect } from "react";
-import API from "@/API/axios.js";
+import API from "../../API/axios";
+
 
 const MyWork = () => {
- // const [works] = useState(workData);
+  // const [works] = useState(workData);
   const categories = ["All", "Web", "Mobile App", "Design", "Branding"];
   const [selectedType, setSelectedType] = useState("All");
-   const [works,setworks]=useState([]);
-          const [loading,setLoading]= useState(true);
+  const [works, setworks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  
-       
-          useEffect(()=>{
-            const handleonworks=async()=>{
-              try{
-                const res=await API.get('/get/recentprojects')
-                if(res.data.success){
-                  setworks(res.data.recentprojects)
-                  console.log(res.data.recentprojects)
-                  setLoading(false)
-                }
-              }
-              catch(error){
-                console.log(error.response?.data?.error||error.message)
-              }
-            }
-            handleonworks();
-        
-          },[]);
-          const filteredWorks =
+  useEffect(() => {
+    const handleonworks = async () => {
+      try {
+        const res = await API.get("/get/recentprojects");
+        if (res.data.success) {
+          setworks(res.data.recentprojects);
+          console.log(res.data.recentprojects);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.log(error.response?.data?.error || error.message);
+      }
+    };
+    handleonworks();
+  }, []);
+  const filteredWorks =
     selectedType === "All"
       ? works
       : works.filter(
           (work) =>
-            work.type.trim().toLowerCase() === selectedType.trim().toLowerCase()
+            work.type.trim().toLowerCase() ===
+            selectedType.trim().toLowerCase(),
         );
-        console.log(filteredWorks)
-       
+  console.log(filteredWorks);
 
   return (
     <div
@@ -91,26 +88,20 @@ const MyWork = () => {
             </p>
 
             {/* Tech Stack */}
-          <div className="flex flex-wrap justify-center gap-3 mt-5">
-   {/* <div className="flex flex-row flex-wrap gap-4 mt-4"> */}
-  {(Array.isArray(work.tech)
-    ? work.tech.flatMap(t =>
-        t.includes(",") ? t.split(",") : t
-      )
-    : []
-  ).map((tech, index) => (
-    <span
-      key={index}
-      className="inline-block px-3 py-1 text-sm bg-gradient-to-r from-[#d68a18] to-[#B415FF] text-white rounded-full shadow"
-    >
-      {tech.trim()}
-    </span>
-  ))}</div>
-
-
-
-
-
+            <div className="flex flex-wrap justify-center gap-3 mt-5">
+              {/* <div className="flex flex-row flex-wrap gap-4 mt-4"> */}
+              {(Array.isArray(work.tech)
+                ? work.tech.flatMap((t) => (t.includes(",") ? t.split(",") : t))
+                : []
+              ).map((tech, index) => (
+                <span
+                  key={index}
+                  className="inline-block px-3 py-1 text-sm bg-gradient-to-r from-[#d68a18] to-[#B415FF] text-white rounded-full shadow"
+                >
+                  {tech.trim()}
+                </span>
+              ))}
+            </div>
 
             {/* GitHub Link */}
             <a
@@ -131,7 +122,7 @@ const MyWork = () => {
       <button
         data-aos="fade-up"
         data-aos-delay={200}
-       className="
+        className="
   my-8
   flex items-center gap-3
   border-2 border-[#B415FF]
@@ -143,13 +134,12 @@ const MyWork = () => {
   transition-all duration-500
   hover:bg-[#B415FF] hover:text-white
 "
->
+      >
         Show More →
       </button>
       {/* <button className="bg-red-600 text-white p-4">
   TEST BUTTON
 </button> */}
-
     </div>
   );
 };

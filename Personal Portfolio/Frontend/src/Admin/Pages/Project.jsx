@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
 import GlassCard from "../Components/GlassCard";
 import Navbar from "../Components/Navbar";
-import API from "@/API/axios";
-import { Delete, DeleteIcon, DivideCircleIcon, Edit3Icon, EditIcon, LucideDelete, LucideEdit, Trash, Trash2 } from "lucide-react";
+import API from "../../API/axios";
+import {
+  Delete,
+  DeleteIcon,
+  DivideCircleIcon,
+  Edit3Icon,
+  EditIcon,
+  LucideDelete,
+  LucideEdit,
+  Trash,
+  Trash2,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Projects = () => {
@@ -24,16 +34,14 @@ const Projects = () => {
     };
     handleonProjects();
   }, []);
-  const HandleonDelete =async(id)=>{
-try {
-  const res = await API.patch(`/delete/project/${id}`);
-  if(res.data.success){
-    setProjects(prev=>prev.filter(project=>project._id!==id));
-  }
-} catch (error) {
-  
-}
-  }
+  const HandleonDelete = async (id) => {
+    try {
+      const res = await API.patch(`/delete/project/${id}`);
+      if (res.data.success) {
+        setProjects((prev) => prev.filter((project) => project._id !== id));
+      }
+    } catch (error) {}
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#DF8908] to-[#B415FF]">
@@ -102,24 +110,22 @@ try {
                       </span>
                     ))}
                   </div>
-                   <div className="flex justify-between"> <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-semibold text-blue-500 underline px-2 mt-4 inline-block"
-                  >
-                    View on GitHub
-                  </a><div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#DF8908] to-[#B415FF] px-2 py-2">
-                      <button
-                        onClick={() =>HandleonDelete(project._id)
-                    
-                        }
-                      >
+                  <div className="flex justify-between">
+                    {" "}
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-semibold text-blue-500 underline px-2 mt-4 inline-block"
+                    >
+                      View on GitHub
+                    </a>
+                    <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#DF8908] to-[#B415FF] px-2 py-2">
+                      <button onClick={() => HandleonDelete(project._id)}>
                         <Trash2 size={18} className="text-white" />
                       </button>
-                    </div></div>
-
-                 
+                    </div>
+                  </div>
                 </GlassCard>
               ))}
             </div>
