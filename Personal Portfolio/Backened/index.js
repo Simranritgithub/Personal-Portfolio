@@ -9,7 +9,7 @@ import userroutes from './routes/Userroutes.js';
 connectDB();
 const app = express();
 app.use(cors({
-  origin: ['http://localhost:5173','https://simranroutportfolio.netlify.app'],
+  origin: ['http://localhost:5173','https://euphonious-douhua-f1e3b8.netlify.app'],
   methods: ['GET','POST','PUT','DELETE','PATCH'],
 }));
 app.use(express.json());
